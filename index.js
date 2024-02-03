@@ -25,7 +25,7 @@ function sendEmail(recipientEmails = [], subject, body) {
   console.log(`Auto replying to ${recipientEmails}`)
   // for you to implement
   //create a send mail port//
-  let a = nodemailer.createTransport({
+  const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 587,
     secure: false,
@@ -36,7 +36,7 @@ function sendEmail(recipientEmails = [], subject, body) {
   });
 
   //send email with defined transport object//
-  let info = a.sendMail({
+  transporter.sendMail({
     from: process.env.GMAIL_USER,
     to: AUTO_REPLY_ADDRESS,
     subject: subject,
